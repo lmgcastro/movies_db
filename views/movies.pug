@@ -1,0 +1,49 @@
+doctype html
+html
+	head
+		title= text
+		style
+			include style/bootstrap.min.css
+		style
+			include style/style.css
+	body
+		h1.display-3= text
+		.container
+			.row.p-2
+				.col-6
+					input#queryText.form-control.form-control-sm
+				.col-4
+					select#queryType.form-control.form-control-sm.justify-content-end
+						option(value='title') Title
+						option(value='year') Year
+						option(value='director') Director
+						option(value='dist') Distributor
+						option(value='buy_date') Buy date
+				.col-2
+					button#querySubmit.btn.btn-sm.btn-primary Search
+
+		ul.list-group-flush
+			each item in items
+				li.row.movie(id=item.imdb)
+					.col-1
+						img.poster.rounded.w-100
+					.col-11
+						h2(id=item.id) #{item.title}
+						h5 #{item.year} | #{item.director}
+						h6.ratings
+						p #{item.distributor} | #{item.buy_date}
+
+- var n = 0;
+	nav
+		ul.pagination.justify-content-center
+			li.page-item
+				a#navPrev.page-link.btn Previous
+			while n <= pages
+				li.page-item
+					a.page-link.btn.navPage(page=n)= ((n++) + 1)
+			li.page-item
+				a#navNext.page-link.btn Next
+
+		script
+			include js/jquery-3.3.1.min.js
+			include js/events.js

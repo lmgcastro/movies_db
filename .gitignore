@@ -1,0 +1,5 @@
+.DS_Store
+data
+db
+movieRatings.js
+node_modules
