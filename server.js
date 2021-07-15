@@ -3,7 +3,6 @@ const Async = require('async');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const movieData = require('./data/movie-data.json');
 const request = require('request');
 const sqlite3 = require('sqlite3').verbose();
 const DB_PATH = 'db/movies.db';

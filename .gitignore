@@ -1,5 +1,5 @@
 .DS_Store
 data
-db
+db/*
 movieRatings.js
 node_modules
