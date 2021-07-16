@@ -45,11 +45,11 @@ $('#querySubmit').on('click', () => {
 	window.location.href = query;
 });
 
-$('#navPrev').on('click', (e) => {
+$('.navPrev').on('click', (e) => {
 	navPage(page - 1);
 });
 
-$('#navNext').on('click', (e) => {
+$('.navNext').on('click', (e) => {
 	navPage(page + 1);
 });
 
@@ -71,4 +71,10 @@ $('.movie').each(e => {
 			$(poster).attr('src', json.poster);
 			rating.innerHTML = rating.innerHTML.concat(' ' + json.ratings);
 		});
+});
+
+$('.poster').each(e => {
+	let element = $('.poster')[e];
+	let width = $(element).width();
+	$(element).attr('style', `height: ${width * 1.5}px;`);
 });
