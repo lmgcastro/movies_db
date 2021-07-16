@@ -25,7 +25,8 @@ app.get('/movies', async (req, res) => {
 		editionCount: `editions: ${totalCount.editions}`,
 		items: movies,
 		pages: parseInt(count / PAGE_SIZE),
-		page: 0
+		page: 0,
+    count
 	};
 	res.render('movies', props);
 });

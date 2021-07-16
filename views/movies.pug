@@ -13,15 +13,17 @@ html
 			h3.col-2.mt-5= editionCount
 					
 - var n = 0;
-		nav
-			ul.pagination.justify-content-center
-				li.page-item
-					a.navPrev.page-link.btn Previous
-				while n <= pages
-					li.page-item
-						a.page-link.btn.navPage(page=n)= ((n++) + 1)
-				li.page-item
-					a.navNext.page-link.btn Next
+		.container
+			.row
+				nav
+					ul.pagination.justify-content-center
+						li.page-item
+							a.navPrev.page-link.btn Previous
+						while n <= pages
+							li.page-item
+								a.page-link.btn.navPage(page=n)= ((n++) + 1)
+						li.page-item
+							a.navNext.page-link.btn Next
 					
 		.container.w-50
 			.row.p-2
@@ -50,15 +52,19 @@ html
 							p #{item.distributor} | #{item.buy_date}
 
 - var n = 0;
-		nav
-			ul.pagination.justify-content-center
-				li.page-item
-					a.navPrev.page-link.btn Previous
-				while n <= pages
-					li.page-item
-						a.page-link.btn.navPage(page=n)= ((n++) + 1)
-				li.page-item
-					a.navNext.page-link.btn Next
+		.container
+			.row
+				nav
+					ul.pagination.justify-content-center
+						li.page-item
+							a.navPrev.page-link.btn Previous
+						while n <= pages
+							li.page-item
+								a.page-link.btn.navPage(page=n)= ((n++) + 1)
+						li.page-item
+							a.navNext.page-link.btn Next
+			.row.text-center
+				p.small #{count} results
 
 		script
 			include js/jquery-3.3.1.min.js
