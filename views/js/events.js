@@ -35,12 +35,20 @@ function navPage(page) {
   }
 }
 
+$("#queryText").on("keyup", () => {
+	if ($("#queryText").val().trim() === "") {
+		$("#querySubmit").addClass("disabled");
+	} else {
+		$("#querySubmit").removeClass("disabled");
+	}
+});
+
 $("#querySubmit").on("click", () => {
-  let query = "?";
-  query = query.concat($("#queryType").val());
-  query = query.concat("=");
-  query = query.concat($("#queryText").val());
-  window.location.href = query;
+	let query = "?";
+	query = query.concat($("#queryType").val());
+	query = query.concat("=");
+	query = query.concat($("#queryText").val().trim());
+	window.location.href = query;
 });
 
 $(".navPrev").on("click", (e) => {

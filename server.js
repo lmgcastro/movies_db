@@ -23,10 +23,10 @@ app.get('/movies', async (req, res) => {
 		text: 'Movies',
 		movieCount: `count: ${totalCount.movies}`,
 		editionCount: `editions: ${totalCount.editions}`,
+		results: count === 1 ? '1 result' : `${count} results`,
 		items: movies,
 		pages: parseInt(count / PAGE_SIZE),
-		page: 0,
-    count
+		page: 0
 	};
 	res.render('movies', props);
 });

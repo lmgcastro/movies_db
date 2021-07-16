@@ -11,7 +11,7 @@ html
 			h1.col-2.display-3.m-3= text
 			h3.col-2.mt-5= movieCount
 			h3.col-2.mt-5= editionCount
-					
+
 - var n = 0;
 		.container
 			.row
@@ -28,7 +28,7 @@ html
 		.container.w-50
 			.row.p-2
 				.col-8
-					input#queryText.form-control.form-control-sm
+					input#queryText.form-control.form-control-sm(value=' ')
 				.col-3
 					select#queryType.form-control.form-control-sm.justify-content-end
 						option(value='title') Title
@@ -37,8 +37,9 @@ html
 						option(value='dist') Distributor
 						option(value='buy_date') Buy date
 				.col-1
-					button#querySubmit.btn.btn-sm.btn-primary Search
+					button#querySubmit.btn.btn-sm.btn-primary.disabled Search
 
+if items.length != 0
 		ul.list-group-flush
 			each item in items
 				li.list-group-item
@@ -50,6 +51,10 @@ html
 							h5 #{item.year} | #{item.director}
 							h6.ratings
 							p #{item.distributor} | #{item.buy_date}
+else
+		.container
+			.row.text-center.p-5
+				h3 No movie was found :(
 
 - var n = 0;
 		.container
@@ -64,7 +69,7 @@ html
 						li.page-item
 							a.navNext.page-link.btn Next
 			.row.text-center
-				p.small #{count} results
+				p.small= results
 
 		script
 			include js/jquery-3.3.1.min.js

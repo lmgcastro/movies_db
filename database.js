@@ -18,13 +18,12 @@ async function getCount({ query }, PAGE_SIZE) {
 	try {
 		let params = { ...query };
 		delete params.page;
-		return await database.queryGet(
-									getQuery({
+		const sql = getQuery({
 										params: query, 
 										count: true, 
 										page_size: PAGE_SIZE
-									}), 
-									Object.values(params));
+									});
+		return await database.queryGet(sql,	Object.values(params));
 	} catch (err) {
 		return console.error(err.message);
 	} finally {
@@ -65,8 +64,8 @@ function getQuery({ params, count, page_size}) {
 		where = `WHERE director LIKE '%' || ? || '%' ORDER BY year`;
 	if (params.dist)
 		where = `WHERE distributor LIKE '%' || ? || '%' ORDER BY title`;
-	if (params.buy)
-		where = `WHERE strftime('%Y-%m', buy_date) = ? ORDER BY buy_date, title`;
+	if (params.buy_date)
+		where = `WHERE strftime('%d/%m/%Y', buy_date) LIKE '%' || ? || '%' ORDER BY date(buy_date) asc, title`;
 
 	let limit = `LIMIT 0, ${page_size}`;
 	if (params.page)
