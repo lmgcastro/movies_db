@@ -8,7 +8,7 @@ html
 			include style/style.css
 	body
 		.row
-			h1.col-2.display-3.m-3= text
+			h1#title.col-2.display-3.m-3= text
 			h3.col-2.mt-5= movieCount
 			h3.col-2.mt-5= editionCount
 
@@ -27,8 +27,10 @@ html
 					
 		.container.w-50
 			.row.p-2
-				.col-8
-					input#queryText.form-control.form-control-sm(value=' ')
+				.col-2
+					button#queryRandom.btn.btn-sm.btn-primary.w-100 Random
+				.col-5
+					input#queryText.form-control.form-control-sm
 				.col-3
 					select#queryType.form-control.form-control-sm.justify-content-end
 						option(value='title') Title
@@ -36,8 +38,8 @@ html
 						option(value='director') Director
 						option(value='dist') Distributor
 						option(value='buy_date') Buy date
-				.col-1
-					button#querySubmit.btn.btn-sm.btn-primary.disabled Search
+				.col-2
+					button#querySubmit.btn.btn-sm.btn-primary.w-100.disabled Search
 
 if items.length != 0
 		ul.list-group-flush

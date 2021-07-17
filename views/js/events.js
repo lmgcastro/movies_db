@@ -35,6 +35,14 @@ function navPage(page) {
   }
 }
 
+$("#title").on("click", () => {
+	window.location.href = "?";
+});
+
+$("#queryRandom").on("click", () => {
+	window.location.href = "?random=true";
+});
+
 $("#queryText").on("keyup", () => {
 	if ($("#queryText").val().trim() === "") {
 		$("#querySubmit").addClass("disabled");

@@ -14,6 +14,7 @@ async function getTotalCount() {
 }
 
 async function getCount({ query }, PAGE_SIZE) {
+	if (query.random) return { count: 1 };
 	let database = await db.openConnection();
 	try {
 		let params = { ...query };
@@ -39,7 +40,9 @@ async function getMovies({ query }, PAGE_SIZE) {
 									params: query, 
 									page_size: PAGE_SIZE
 								});
-		result = await database.query(sql, Object.values(query));
+		let params = { ...query };
+		delete params.random;
+		result = await database.query(sql, Object.values(params));
 	} catch (err) {
 		return console.error(err.message);
 	} finally {
@@ -49,9 +52,11 @@ async function getMovies({ query }, PAGE_SIZE) {
 	return { movies: result.rows };
 }
 
-function getQuery({ params, count, page_size}) {
+function getQuery({ params, count, page_size }) {
 	const select = `SELECT id, title, year, director, imdb, distributor, 
 					strftime('%d/%m/%Y', buy_date) as buy_date FROM movies`;
+
+	if (params.random) return `${select} ORDER BY RANDOM() LIMIT 1`;
 
 	const selectCount = `SELECT COUNT(1) as count FROM movies`;
 
