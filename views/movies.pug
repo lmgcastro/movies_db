@@ -12,21 +12,8 @@ html
 			h3.col-2.mt-5= movieCount
 			h3.col-2.mt-5= editionCount
 
-- var n = 0;
-		.container
-			.row
-				nav
-					ul.pagination.justify-content-center
-						li.page-item
-							a.navPrev.page-link.btn Previous
-						while n <= pages
-							li.page-item
-								a.page-link.btn.navPage(page=n)= ((n++) + 1)
-						li.page-item
-							a.navNext.page-link.btn Next
-					
 		.container.w-50
-			.row.p-2
+			.row.mb-3
 				.col-2
 					button#queryRandom.btn.btn-sm.btn-primary.w-100 Random
 				.col-5
@@ -40,6 +27,27 @@ html
 						option(value='buy_date') Buy date
 				.col-2
 					button#querySubmit.btn.btn-sm.btn-primary.w-100.disabled Search
+					
+		.container
+			.row
+				nav
+					ul.pagination.justify-content-center
+						each letter in letters
+							li.page-item
+								a.page-link.btn.navLetter(letter=letter)= letter
+
+- var n = 0;
+		.container
+			.row
+				nav
+					ul.pagination.justify-content-center
+						li.page-item
+							a.navPrev.page-link.btn Previous
+						while n <= pages
+							li.page-item
+								a.page-link.btn.navPage(page=n)= ((n++) + 1)
+						li.page-item
+							a.navNext.page-link.btn Next
 
 if items.length != 0
 		ul.list-group-flush

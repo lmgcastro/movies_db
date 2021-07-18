@@ -71,6 +71,8 @@ function getQuery({ params, count, page_size }) {
 		where = `WHERE distributor LIKE '%' || ? || '%' ORDER BY title`;
 	if (params.buy_date)
 		where = `WHERE strftime('%d/%m/%Y', buy_date) LIKE '%' || ? || '%' ORDER BY date(buy_date) asc, title`;
+	if (params.starts_with)
+		where = `WHERE title LIKE ? || '%' ORDER BY title, year`;
 
 	let limit = `LIMIT 0, ${page_size}`;
 	if (params.page)

@@ -59,6 +59,10 @@ $("#querySubmit").on("click", () => {
 	window.location.href = query;
 });
 
+$('.navLetter').on("click", (e) => {
+	window.location.href = `?starts_with=${$(e.target).attr("letter")}`;
+});
+
 $(".navPrev").on("click", (e) => {
   navPage(page - 1);
 });

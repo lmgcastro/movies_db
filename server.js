@@ -25,6 +25,8 @@ app.get('/movies', async (req, res) => {
 		editionCount: `editions: ${totalCount.editions}`,
 		results: count === 1 ? '1 result' : `${count} results`,
 		items: movies,
+		letters: ['The', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
+			'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
 		pages: parseInt(count / PAGE_SIZE),
 		page: 0
 	};
